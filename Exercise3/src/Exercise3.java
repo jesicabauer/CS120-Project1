@@ -1,4 +1,9 @@
 import javax.swing.JOptionPane;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 // Exercise3.java
 // X If/Then/Else and nested If/Then/Else
@@ -12,8 +17,25 @@ import javax.swing.JOptionPane;
 
 public class Exercise3 { // declares a public class
 
-	public static void main(String[] args) { 
+	public static void main(String[] args) throws IOException {
+        
+		{ // code from StackOverFlow
+		String path = "intro.png";
+        File file = new File(path);
+        BufferedImage image = ImageIO.read(file);
+        JLabel label = new JLabel(new ImageIcon(image));
+        JFrame intro = new JFrame();
+        intro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        intro.getContentPane().add(label);
+        intro.pack();
+        intro.setLocationRelativeTo(null);
+        intro.setVisible(true); 
 		
+		try{Thread.sleep(4000);}  // sleep timer, in milliseconds
+		catch(Exception e){}; // code from Dave Marshall
+		intro.dispose();
+		
+		}
 // begin character creation sequence		
 		
 		int str;
