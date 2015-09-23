@@ -2,17 +2,19 @@ import javax.swing.JOptionPane;
 
 // Exercise3.java
 // X If/Then/Else and nested If/Then/Else
-// Switch/Case
+// X Switch/Case
 // And/Or operator && ||
 // X while or do/while loop
 // for loop and nested loop
 // graphics object in a JFrame
-// using eGit
-// using the Debugger
+// X using eGit
+// X using the Debugger
 
 public class Exercise3 { // declares a public class
 
 	public static void main(String[] args) { 
+		
+// begin character creation sequence		
 		
 		int str;
 		int intl; 
@@ -20,6 +22,7 @@ public class Exercise3 { // declares a public class
 		int remain1; 
 		int remain2; 
 		int remain = 20; 
+		int agree; 
 			
 		//prompt user to enter name
 		String name = 
@@ -28,7 +31,7 @@ public class Exercise3 { // declares a public class
 		//show message with JOptionPane, Information style
 		JOptionPane.showMessageDialog(null, name + "! I thought you looked familiar! Let's get started.",name,JOptionPane.INFORMATION_MESSAGE);
 		
-		while ( remain != 0 ) {
+		do {
 		
 		remain = 0; 
 		
@@ -61,11 +64,44 @@ public class Exercise3 { // declares a public class
 		chm = Integer.parseInt(charm);
 		
 		remain = 20 - str - intl - chm; 
-		if (remain == 0) {
-			break;
-		}
 		
-		}
+		} while ( remain != 0 ); 
+		
+// end character creation sequence
+// begin choice to play the game
+		
+		JOptionPane.showMessageDialog(null, "Recently, we've been having some... Issues. \n"
+				+ "Guests have been going missing and turning up. Dead. Here. In the cafe.", name ,JOptionPane.INFORMATION_MESSAGE);
+		do {
+		String yeah = 
+				JOptionPane.showInputDialog("Can you help? \n"
+						+ "(Yes or No)"); 
+		String play = yeah.toUpperCase();
+	
+		switch (play){ // switch case from Dave Marshall and Deitel textbook
+
+			case "YES": 
+	    	   String yes = 
+				String.format("Thank you! Please, %s, come in! Come in.", name); 
+	    	   JOptionPane.showMessageDialog(null, yes,"Thank you!",JOptionPane.INFORMATION_MESSAGE);
+	    	   agree = 1; 
+	    	   break; 
+	    	   
+	       case "NO":
+	    	   JOptionPane.showMessageDialog(null, "Well, then. You best be going. \n"
+	    	   		+ "Wouldn't want something happening to you.  ",name,JOptionPane.INFORMATION_MESSAGE);
+	    	   agree = 1;
+	    	   break;
+	    	   
+	       default: 
+	    	   JOptionPane.showMessageDialog(null, "What was that? I didn't hear you...", name ,JOptionPane.INFORMATION_MESSAGE);
+	    	 
+	    	   agree = 0; 
+					} 
+		
+	       } while ( agree == 0 ); 
+	
+// Begin actual game play 	
 		
 	}
 }
