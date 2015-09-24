@@ -6,24 +6,30 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 // Exercise3.java
-// X If/Then/Else and nested If/Then/Else
-// X Switch/Case
+// If/Then/Else and nested If/Then/Else
+// Switch/Case
 // And/Or operator && ||
-// X while or do/while loop
+// while or do/while loop
 // for loop and nested loop
 // graphics object in a JFrame
-// X using eGit
-// X using the Debugger
+// using eGit
+// using the Debugger
 
 public class Exercise3 { // declares a public class
 
 	public static void main(String[] args) throws IOException {
         
-		{ // code from StackOverFlow
+// begin introduction JFrame Sequence		
+		
+		{ 
+	// defines path to image, a file from the path, an image from the file
 		String path = "intro.png";
         File file = new File(path);
         BufferedImage image = ImageIO.read(file);
+        
+    //puts the image in the "label" part
         JLabel label = new JLabel(new ImageIcon(image));
+        
         JFrame intro = new JFrame();
         intro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         intro.getContentPane().add(label);
@@ -31,11 +37,13 @@ public class Exercise3 { // declares a public class
         intro.setLocationRelativeTo(null);
         intro.setVisible(true); 
 		
-		try{Thread.sleep(4000);}  // sleep timer, in milliseconds
+		try{Thread.sleep(5000);}  // sleep timer, in milliseconds
 		catch(Exception e){}; // code from Dave Marshall
 		intro.dispose();
 		
-		}
+		} // code from StackOverFlow
+		
+// dispose introduction		
 // begin character creation sequence		
 		
 		int str;
@@ -45,6 +53,7 @@ public class Exercise3 { // declares a public class
 		int remain2; 
 		int remain = 20; 
 		int agree; 
+		int lives = 3;
 			
 		//prompt user to enter name
 		String name = 
@@ -53,6 +62,8 @@ public class Exercise3 { // declares a public class
 		//show message with JOptionPane, Information style
 		JOptionPane.showMessageDialog(null, name + "! I thought you looked familiar! Let's get started.",name,JOptionPane.INFORMATION_MESSAGE);
 		
+		for ( lives = 2; lives >= 0; lives-- ){ // lives=3, runs until lives is less than or equal to zero, minus 1 each time
+			
 		do {
 		
 		remain = 0; 
@@ -90,13 +101,21 @@ public class Exercise3 { // declares a public class
 		} while ( remain != 0 ); 
 		
 // end character creation sequence
+		
+		if ( str == 20 || chm == 20 || intl == 20 ){
+			String sarcasm = 
+					String.format("So. You put all your points in one category. \n"
+							+ "I see you like to live dangerously..."); 
+			JOptionPane.showMessageDialog(null, sarcasm, "Hmmm...",JOptionPane.INFORMATION_MESSAGE);
+		}
+		
 // begin choice to play the game
 		
-		JOptionPane.showMessageDialog(null, "Recently, we've been having some... Issues. \n"
+		JOptionPane.showMessageDialog(null, "Anyways! Recently, we've been having some... Issues. \n"
 				+ "Guests have been going missing and turning up. Dead. Here. In the cafe.", name ,JOptionPane.INFORMATION_MESSAGE);
 		do {
 		String yeah = 
-				JOptionPane.showInputDialog("Can you help? \n"
+				JOptionPane.showInputDialog("Will you help us? \n"
 						+ "(Yes or No)"); 
 		String play = yeah.toUpperCase();
 	
@@ -122,8 +141,40 @@ public class Exercise3 { // declares a public class
 					} 
 		
 	       } while ( agree == 0 ); 
-	
-// Begin actual game play 	
+
+// end choice to play the game
+// begin actual game play
+		
+		do {
+			String yeah = 
+					JOptionPane.showInputDialog("Lives Remaining: "+lives+ "\n"
+							+ "Play Again? \n"
+							+ "(Yes or No)"); 
+			String play = yeah.toUpperCase();
+		
+			switch (play){ // switch case from Dave Marshall and Deitel textbook
+
+				case "YES": 
+		    	   String yes = 
+					String.format("Loading...", name); 
+		    	   JOptionPane.showMessageDialog(null, yes,"Thank you!",JOptionPane.INFORMATION_MESSAGE);
+		    	   agree = 1; 
+		    	   break; 
+		    	   
+		       case "NO":
+		    	   JOptionPane.showMessageDialog(null, "Thank you for playing!",name,JOptionPane.INFORMATION_MESSAGE);
+		    	   agree = 1;
+		    	   break;
+		    	   
+		       default: 
+		    	   JOptionPane.showMessageDialog(null, "It was a simple question...", name ,JOptionPane.INFORMATION_MESSAGE);
+		    	 
+		    	   agree = 0; 
+						} 
+			
+		       } while ( agree == 0 ); 
+		
+		}
 		
 	}
 }
