@@ -1,24 +1,21 @@
 package project1;
 
-import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class AngelFish extends Fish {
 	
 	public AngelFish() { // constructor
 		
-		ImageIcon blueangelR = new ImageIcon("blue-a.png");
-		ImageIcon blueangelL = new ImageIcon("blue-a-1.png");
-		
-		ImageIcon goldangelR = new ImageIcon("gold-a.png");
-		ImageIcon goldangelL = new ImageIcon("gold-a-1.png");
-		
-		ImageIcon whiteangelR = new ImageIcon("white-a.png");
-		ImageIcon whiteangelL = new ImageIcon("white-a-1.png");
-		
 	}
 	
-	public static void newAngel() {
+	public static int newAngel() {
 		
+		String newFishColor[] = {"Blue","Gold", "White"}; 
+		int color = JOptionPane.showOptionDialog(null,"What color Angelfish do you want?", 
+				"Welcome to CEJ Aquarium", JOptionPane.INFORMATION_MESSAGE, 3, null,
+				newFishColor, newFishColor[0]);
+		
+		return color; 
 	}
 	
 	
